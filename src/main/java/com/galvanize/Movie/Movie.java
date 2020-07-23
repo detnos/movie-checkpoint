@@ -1,17 +1,29 @@
 package com.galvanize.Movie;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Movie {
+    @JsonProperty("Title")
     private String title = "";
+    @JsonProperty("Minutes")
     private int minutes = 0;
+    @JsonProperty("Genre")
     private String genre = "";
+    @JsonProperty("Rating")
     private double rating = 0.0;
+    @JsonProperty("Metascore")
     private int metascore = 0;
+    @JsonProperty("Descriptioon")
     private String description = "";
+    @JsonProperty("Votes")
     private int votes = 0;
+    @JsonProperty("Gross")
     private double gross = 0.00;
+    @JsonProperty("Year")
     private String year = "";
+    @JsonProperty("Credits")
     private List<Credit> credits;
 
     public String getTitle() {
@@ -95,6 +107,7 @@ public class Movie {
     }
 
     static class Credit {
+        @JsonProperty("Person")
         private Person person;
 
         public Person getPerson() {
@@ -107,8 +120,11 @@ public class Movie {
     }
 
     static class Person {
+        @JsonProperty("Role")
         private String role = "";
+        @JsonProperty("FirstName")
         private String firstName = "";
+        @JsonProperty("LastName")
         private String lastName = "";
 
         public String getRole() {
