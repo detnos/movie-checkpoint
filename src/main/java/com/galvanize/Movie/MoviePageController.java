@@ -1,10 +1,10 @@
 package com.galvanize.Movie;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
@@ -59,5 +59,20 @@ public class MoviePageController {
         movie.setCredits(Arrays.asList(c1, c2, c3, c4, c5));
 
         return movie;
+    }
+
+    @PostMapping("/gross/total")
+    public Movie.GrossTotal grossTotal(@RequestBody List<Movie> movieList) {
+        Movie.GrossTotal result = new Movie.GrossTotal();
+        int total = 0;
+
+        for (int i = 0;i< movieList.size(); i++) {
+            double currGross = movieList.get(i).getGross();
+            total += currGross;
+        }
+
+        result.setResult(total);
+
+        return result;
     }
 }

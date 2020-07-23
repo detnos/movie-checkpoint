@@ -1,29 +1,40 @@
 package com.galvanize.Movie;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class Movie {
     @JsonProperty("Title")
+    @JsonAlias({"title"})
     private String title = "";
     @JsonProperty("Minutes")
+    @JsonAlias({"minutes"})
     private int minutes = 0;
     @JsonProperty("Genre")
+    @JsonAlias({"genre"})
     private String genre = "";
     @JsonProperty("Rating")
+    @JsonAlias({"rating"})
     private double rating = 0.0;
     @JsonProperty("Metascore")
+    @JsonAlias({"metascore"})
     private int metascore = 0;
-    @JsonProperty("Descriptioon")
+    @JsonProperty("Description")
+    @JsonAlias({"description"})
     private String description = "";
     @JsonProperty("Votes")
+    @JsonAlias({"votes"})
     private int votes = 0;
     @JsonProperty("Gross")
+    @JsonAlias({"gross"})
     private double gross = 0.00;
     @JsonProperty("Year")
+    @JsonAlias({"year"})
     private String year = "";
     @JsonProperty("Credits")
+    @JsonAlias({"credits"})
     private List<Credit> credits;
 
     public String getTitle() {
@@ -108,6 +119,7 @@ public class Movie {
 
     static class Credit {
         @JsonProperty("Person")
+        @JsonAlias({"person"})
         private Person person;
 
         public Person getPerson() {
@@ -121,10 +133,13 @@ public class Movie {
 
     static class Person {
         @JsonProperty("Role")
+        @JsonAlias({"role"})
         private String role = "";
         @JsonProperty("FirstName")
+        @JsonAlias({"firstName", "firstname"})
         private String firstName = "";
         @JsonProperty("LastName")
+        @JsonAlias({"lastName", "lastname"})
         private String lastName = "";
 
         public String getRole() {
@@ -149,6 +164,18 @@ public class Movie {
 
         public void setLastName(String lastName) {
             this.lastName = lastName;
+        }
+    }
+
+    static class GrossTotal {
+        private int result;
+
+        public int getResult() {
+            return result;
+        }
+
+        public void setResult(int result) {
+            this.result = result;
         }
     }
 }
